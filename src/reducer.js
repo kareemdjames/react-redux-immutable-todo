@@ -2,10 +2,9 @@ import { List, Map } from 'immutable';
 
 const init = List([]);
 
-export default function(todos=init, action) {
+export default function reducer(todos=init, action) {
   switch(action.type) {
     case 'ADD_TODO':
-    //returns new list with the todo appended at the end
       return todos.push(Map(action.payload));
     case 'TOGGLE_TODO':
       return todos.map(t => {
@@ -14,7 +13,7 @@ export default function(todos=init, action) {
         } else {
           return t;
         }
-      })
+      });
     default:
       return todos;
   }

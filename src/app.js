@@ -1,12 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { TodoList } from './components';
-import { createStore} from 'redux';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import reducer from './reducer';
+import { TodoList } from './containers';
 
 const store = createStore(reducer);
 
 render(
-  <TodoList todos={store.getState()} />,
+  <Provider store={store}>
+    <TodoList />
+  </Provider>,
   document.getElementById('app')
 );
